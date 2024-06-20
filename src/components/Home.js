@@ -21,25 +21,17 @@ const Home = () => {
     if (query) {
       API = `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`;
     }
-    try {                                      // error handling
-      const response = await fetch(API);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      dispatch(setValue(data.articles));
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);                      // error handling
-    }
+    const response = await fetch(API);
+    const data = await response.json();
+    dispatch(setValue(data.articles));
+    setLoading(false);
   };
 
   useEffect(() => {
     getNewsData();
   }, [category]); // Re-fetch news when the category changes
 
-  const handleSearchClick = () => {   // search related data 
+  const handleSearchClick = () => {   // search
     getNewsData();
   };
 
