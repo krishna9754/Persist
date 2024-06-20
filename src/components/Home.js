@@ -15,9 +15,9 @@ const Home = () => {
 
 
   const API_KEY = "6024ebf658bb44c0b1df11e5343ed075";
+  let API = `https://newsapi.org/v2/top-headlines?country=us&category=${category.toLowerCase()}&apiKey=${API_KEY}`;
+
   const getNewsData = async () => {
-    setLoading(true);
-    let API = `https://newsapi.org/v2/top-headlines?country=us&category=${category.toLowerCase()}&apiKey=${API_KEY}`;
     if (query) {
       API = `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`;
     }
