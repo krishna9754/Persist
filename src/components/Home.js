@@ -29,7 +29,7 @@ const Home = () => {
       const data = await response.json();
       dispatch(setValue(data.articles));
     } catch (error) {
-      setError("Search data not found");
+      setError(error.message);
     } finally {
       setLoading(false);                      // error handling
     }
