@@ -28,11 +28,10 @@ const Home = () => {
       }
       const data = await response.json();
       dispatch(setValue(data.articles));
+      setLoading(false); 
     } catch (error) {
       setError(error.message);
-    } finally {
-      setLoading(false);                      // error handling
-    }
+    } 
   };
 
   useEffect(() => {
